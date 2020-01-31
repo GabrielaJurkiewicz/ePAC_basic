@@ -2,8 +2,8 @@ function [] = MI_calc(EEG,chan_fP,chan_fA,epochs,fPstart,fPend,fPstep,fPfiltband
 
     %% -------------------------- RESTRICTIONS -------------------------
     if ((length(size(EEG.data))<3)&&(strcmp(type,'event_related')))
-        disp('There are no epochs in this dataset. Compulsory change of "type" to continous')
-        type = 'continous';
+        disp('There are no epochs in this dataset. Compulsory change of "type" to continuous')
+        type = 'continuous';
     end
     
     if (fAfiltband < 2*fPend)
@@ -104,8 +104,8 @@ function [] = MI_calc(EEG,chan_fP,chan_fA,epochs,fPstart,fPend,fPstep,fPfiltband
     
     %% ---------------------------- MAIN PART -------------------------------
     disp('-----------------------Modulation Index algorithm calculations----------------------')
-    if strcmp(type,'continous')
-        run_continous_MI(EEG,signalA,signalP,Epochs,fP_bins,fP,fA_bins,fA,dirOut,Nboot,pMI,ID,phaseBins,plotWithMask,plotWithoutMask)
+    if strcmp(type,'continuous')
+        run_continuous_MI(EEG,signalA,signalP,Epochs,fP_bins,fP,fA_bins,fA,dirOut,Nboot,pMI,ID,phaseBins,plotWithMask,plotWithoutMask)
     elseif strcmp(type,'event_related')
         run_event_related_MI(EEG,signalA,signalP,Epochs,fP_bins,fP,fA_bins,fA,dirOut,Nboot,pMI,ID,phaseBins,plotWithMask,plotWithoutMask)
     end
