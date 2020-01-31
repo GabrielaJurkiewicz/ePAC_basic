@@ -40,30 +40,30 @@
 %         numbers of epochs that will be analysed 
 % 
 %       - Frequency for phase start (fPstart):
-%         the beginning of the examinated range of frequencies for phase (frequencies of low-frequency oscillation 
+%         the beginning of the examined range of frequencies for phase (frequencies of low-frequency oscillation 
 %         with modulating phase) 
 % 
 %       - Frequency for phase stop (fPend):
-%         the end of the examinated range of frequencies for phase (frequencies of low-frequency oscillation  
+%         the end of the examined range of frequencies for phase (frequencies of low-frequency oscillation  
 %         with modulating phase)
 % 
 %       - Frequency for phase step (fPstep):
-%         the step between the beginning and end of examinated range of frequencies for phase. 
+%         the step between the beginning and end of examined range of frequencies for phase. 
 % 
 %       - Filtration bandwidth for phase frequenies (fPfiltband):
 %         Each frequency for phase f_P is in fact a bin ranging from f_P-fPfiltband/2 to f_P+fPfiltband/2
 %
 %       - Frequency for amplitude start (fAstart):
-%         the beginning of the examinated range of frequencies for amplitude (frequencies of high-frequency oscillation
+%         the beginning of the examined range of frequencies for amplitude (frequencies of high-frequency oscillation
 %         with modulated amplitude)
 % 
 %       - Frequency for amplitude stop (fAend):
-%         the end of the examinated range of frequencies for amplitude (frequencies of high-frequency oscillation
+%         the end of the examined range of frequencies for amplitude (frequencies of high-frequency oscillation
 %         with modulated amplitude). It can not be bigger than sampling frequency/2 divided by 1.15 (which accounts for 
 %         filtering transition zone) and with fA_filtband/2 subtracted.
 % 
 %       - Frequency for amplitude step (fAstep):
-%         the step between the beginning and end of examinated range of frequencies for amplitude. 
+%         the step between the beginning and end of examined range of frequencies for amplitude. 
 %
 %       - Filtration bandwidth for amplitude frequency (fAfiltband):
 %         Each frequency for amplitude f_A is in fact a bin ranging from f_A-fAfiltband/2 to f_A+fAfiltband/2. 
@@ -76,7 +76,7 @@
 %         number of existing sets of results 
 % 
 %       - Type of data (type):
-%         type of EEG data to be processed. It should be 'continous' when the EEG data is not devided into 
+%         type of EEG data to be processed. It should be 'continuous' when the EEG data is not devided into 
 %         epochs or when the existing epochs are supposed to give separate results. It should be 'event_related' 
 %         when the epochs are in fact subsequent trials and they are supposed to give one averaged result
 % 
@@ -136,7 +136,7 @@ function [LASTCOM] = pop_dPAC_calc(EEG , varargin)
     defaults.chan_fA    = 1;
     defaults.epochs     = 1:EEG.trials; 
     defaults.dirOut     = EEG.filepath;
-    defaults.type       = 'continous';
+    defaults.type       = 'continuous';
     defaults.fPstart    = 4;
     defaults.fPend      = 8;
     defaults.fPstep     = 1;
@@ -173,7 +173,7 @@ function [LASTCOM] = pop_dPAC_calc(EEG , varargin)
          { 'style', 'text', 'string', 'Directory for output: ' }, ...
          { 'style', 'edit', 'string', num2str(defaults.dirOut), 'tag', 'dirOut'}, ...
          { 'style', 'text', 'string', 'Type of data: ' }, ...
-         { 'style', 'popupmenu', 'string', 'continous|event related' 'tag' 'type' }, ...
+         { 'style', 'popupmenu', 'string', 'continuous|event related' 'tag' 'type' }, ...
          { 'style', 'text', 'string', 'Do you want to analyze epochs marked as artifacts: ' }, ...
          { 'style', 'popupmenu', 'string', 'no|yes', 'tag', 'artifacts' }, ...
          { 'style', 'text', 'string', 'Which results do you want to plot: ' }, ...
@@ -217,7 +217,7 @@ function [LASTCOM] = pop_dPAC_calc(EEG , varargin)
             params.dirOut   = params.dirOut;
             switch params.type
                 case 1
-                	params.type = 'continous';
+                	params.type = 'continuous';
                 case 2
                     params.type = 'event_related';
             end
@@ -280,7 +280,7 @@ function [LASTCOM] = pop_dPAC_calc(EEG , varargin)
     end
     
     if ((length(size(EEG.data))<3)&&(strcmp(params.type,'event_related')))
-        disp('There are no epochs in this dataset. Compulsory change of "type" to continous')
+        disp('There are no epochs in this dataset. Compulsory change of "type" to continuous')
         params.type = defaults.type;
     end
     
