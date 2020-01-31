@@ -25,9 +25,9 @@ EEG = eeg_checkset( EEG);
 
 chan_fP    = 1;
 chan_fA    = 1;
-epochs     = 1;
+epochs     = 1:EEG.trials;
 dirOut     = './';
-type       = 'continous';
+type       = 'continuous';
 fPstart    = 4;
 fPend      = 8;
 fPstep     = 1;
