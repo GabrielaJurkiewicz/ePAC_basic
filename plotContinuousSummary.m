@@ -17,7 +17,7 @@
 
 %    Gabriela Jurkiewicz <gabriela.j.jurkiewicz@gmail.com>
 
-function [] = plotContinousSummary(EEG,fP,fA,dirOut,ID,alpha,methodName,plotWithMask,plotWithoutMask)
+function [] = plotContinuousSummary(EEG,fP,fA,dirOut,ID,alpha,methodName,plotWithMask,plotWithoutMask)
 
     directoryOut = [dirOut '/v' ID '_' methodName '_SUMMARY/'];
     [status,message,~] = mkdir(directoryOut);
