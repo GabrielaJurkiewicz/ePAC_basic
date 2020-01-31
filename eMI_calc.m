@@ -21,8 +21,8 @@ function [] = eMI_calc(EEG,chan_fP,chan_fA,epochs,fPstart,fPend,fPstep,fPband,fA
 
     %% -------------------------- RESTRICTIONS -------------------------
     if ((length(size(EEG.data))<3)&&(strcmp(type,'event_related')))
-        disp('There are no epochs in this dataset. Compulsory change of "type" to continous')
-        type = 'continous';
+        disp('There are no epochs in this dataset. Compulsory change of "type" to continuous')
+        type = 'continuous';
     end
     
     if (fAend>floor(EEG.srate/2))
@@ -115,8 +115,8 @@ function [] = eMI_calc(EEG,chan_fP,chan_fA,epochs,fPstart,fPend,fPstep,fPband,fA
     
     %% ---------------------------- MAIN PART -------------------------------
     disp('----------------------- eMI: calculations -------------------------------------------------------------------')
-    if strcmp(type,'continous')
-        run_continous_eMI(EEG,Epochs,HighFreqSignal,Maxes,LowFreq,fP_bins,fP,fAstart,fAend,fAstep,margines,dirOut,nbCycles,w,nbBins,Nboot,pPhaseCom,peMI,ID,plotWithMask,plotWithoutMask)
+    if strcmp(type,'continuous')
+        run_continuous_eMI(EEG,Epochs,HighFreqSignal,Maxes,LowFreq,fP_bins,fP,fAstart,fAend,fAstep,margines,dirOut,nbCycles,w,nbBins,Nboot,pPhaseCom,peMI,ID,plotWithMask,plotWithoutMask)
     elseif strcmp(type,'event_related')
         run_event_related_eMI(EEG,Epochs,HighFreqSignal,Maxes,LowFreq,fP_bins,fP,fAstart,fAend,fAstep,margines,dirOut,nbCycles,w,nbBins,Nboot,pPhaseCom,peMI,ID,plotWithMask,plotWithoutMask)
     end
