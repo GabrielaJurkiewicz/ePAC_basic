@@ -17,7 +17,7 @@
 
 %    Gabriela Jurkiewicz <gabriela.j.jurkiewicz@gmail.com>
 
-function [] = run_continous_MI(EEG,SignalA,SignalP,Epochs,fP_bins,fP,fA_bins,fA,dirOut,Nboot,pMI,ID,phaseBins,plotWithMask,plotWithoutMask)
+function [] = run_continuous_MI(EEG,SignalA,SignalP,Epochs,fP_bins,fP,fA_bins,fA,dirOut,Nboot,pMI,ID,phaseBins,plotWithMask,plotWithoutMask)
     
     Fs = EEG.srate;
     for epoch = 1:length(Epochs)
@@ -100,7 +100,7 @@ function [] = run_continous_MI(EEG,SignalA,SignalP,Epochs,fP_bins,fP,fA_bins,fA,
     end
 
     if length(Epochs)>1
-        plotContinousSummary(EEG,fP,fA,dirOut,ID,(100-pmMVL)/100,'MI')
+        plotContinuousSummary(EEG,fP,fA,dirOut,ID,(100-pmMVL)/100,'MI')
     end
 
 end
