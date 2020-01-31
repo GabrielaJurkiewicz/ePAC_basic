@@ -17,7 +17,7 @@
 
 %    Gabriela Jurkiewicz <gabriela.j.jurkiewicz@gmail.com>
 
-function [] = run_continous_eMI(EEG,Epochs,HighFreqSignal,Maxes,LowFreq,fP_bins,fP,fAstart,fAend,fAstep,margines,dirOut,nbCycles,w,nbBins,Nboot,pPhaseCom,peMI,ID,plotWithMask,plotWithoutMask)
+function [] = run_continuous_eMI(EEG,Epochs,HighFreqSignal,Maxes,LowFreq,fP_bins,fP,fAstart,fAend,fAstep,margines,dirOut,nbCycles,w,nbBins,Nboot,pPhaseCom,peMI,ID,plotWithMask,plotWithoutMask)
 
     fA = fAstart:fAstep:fAend;
     PhaseBins = zeros(1,nbBins);
@@ -142,7 +142,7 @@ function [] = run_continous_eMI(EEG,Epochs,HighFreqSignal,Maxes,LowFreq,fP_bins,
     end
    
     if length(Epochs)>1
-        plotContinousSummary(EEG,fP,fA,dirOut,ID,(100-peMI)/100,plotWithMask,plotWithoutMask)
+        plotContinuousSummary(EEG,fP,fA,dirOut,ID,(100-peMI)/100,plotWithMask,plotWithoutMask)
     end
     
 end
