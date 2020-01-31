@@ -17,7 +17,7 @@
 
 %    Gabriela Jurkiewicz <gabriela.j.jurkiewicz@gmail.com>
 
-function [Maps, MeanSignal, MessMaps, MeanFPsignal] = calcMeanMapContinous(signal, mx, fPsignal, Fs, cut, w, fAstart, fAend, fAstep, fA, fP_b, Nboot, plotWithMask)
+function [Maps, MeanSignal, MessMaps, MeanFPsignal] = calcMeanMap(signal, mx, fPsignal, Fs, cut, w, fAstart, fAend, fAstep, fA, fP_b, Nboot, plotWithMask)
 
     %% ---------------- PREPARE STRUCTURES ---------------------
     num = 0;
