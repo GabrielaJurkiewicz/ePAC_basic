@@ -2,8 +2,8 @@ function [] = dPAC_calc(EEG,chan_fP,chan_fA,epochs,fPstart,fPend,fPstep,fPfiltba
 
     %% -------------------------- RESTRICTIONS -------------------------
     if ((length(size(EEG.data))<3)&&(strcmp(type,'event_related')))
-        disp('There are no epochs in this dataset. Compulsory change of "type" to continous')
-        type = 'continous';
+        disp('There are no epochs in this dataset. Compulsory change of "type" to continuous')
+        type = 'continuous';
     end
     
     if (fAfiltband < 2*fPend)
@@ -98,8 +98,8 @@ function [] = dPAC_calc(EEG,chan_fP,chan_fA,epochs,fPstart,fPend,fPstep,fPfiltba
     
     %% ---------------------------- MAIN PART -------------------------------
     disp('-----------------------directPAC algorithm calculations----------------------')
-    if strcmp(type,'continous')
-        run_continous_dPAC(EEG,signalA,signalP,Epochs,fP_bins,fP,fA_bins,fA,dirOut,Nboot,pdPAC,ID,plotWithMask,plotWithoutMask)
+    if strcmp(type,'continuous')
+        run_continuous_dPAC(EEG,signalA,signalP,Epochs,fP_bins,fP,fA_bins,fA,dirOut,Nboot,pdPAC,ID,plotWithMask,plotWithoutMask)
     elseif strcmp(type,'event_related')
         run_event_related_dPAC(EEG,signalA,signalP,Epochs,fP_bins,fP,fA_bins,fA,dirOut,Nboot,pdPAC,ID,plotWithMask,plotWithoutMask)
     end
