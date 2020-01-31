@@ -17,7 +17,7 @@
 
 %    Gabriela Jurkiewicz <gabriela.j.jurkiewicz@gmail.com>
 
-function [] = run_continous_dPAC(EEG,SignalA,SignalP,Epochs,fP_bins,fP,fA_bins,fA,dirOut,Nboot,pdPAC,ID,plotWithMask,plotWithoutMask)
+function [] = run_continuous_dPAC(EEG,SignalA,SignalP,Epochs,fP_bins,fP,fA_bins,fA,dirOut,Nboot,pdPAC,ID,plotWithMask,plotWithoutMask)
     
     Fs = EEG.srate;
     for epoch = 1:length(Epochs)
@@ -103,7 +103,7 @@ function [] = run_continous_dPAC(EEG,SignalA,SignalP,Epochs,fP_bins,fP,fA_bins,f
     end
 
     if length(Epochs)>1
-        plotContinousSummary(EEG,fP,fA,dirOut,ID,(100-pmMVL)/100,'dPAC',plotWithMask,plotWithoutMask)
+        plotContinuousSummary(EEG,fP,fA,dirOut,ID,(100-pmMVL)/100,'dPAC',plotWithMask,plotWithoutMask)
     end
 
 end
