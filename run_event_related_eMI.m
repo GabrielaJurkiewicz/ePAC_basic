@@ -44,6 +44,9 @@ function [] = run_event_related_eMI(EEG,Epochs,HighFreqSignal,Maxes,LowFreq,fP_b
         time  = linspace(-cut,cut,floor(cut*EEG.srate)*2+1);
         MeanAmp = zeros(length(fA),nbBins);
         MeanAmpSurr = zeros(Nboot,length(fA),nbBins);
+        Map         = zeros(size(fA,2),floor(cut*EEG.srate)*2+1);
+        MeanSignal  = zeros(1,floor(cut*EEG.srate)*2+1);
+        MeanLowFreq = zeros(1,floor(cut*EEG.srate)*2+1);
 
         for epoch = 1:length(Epochs)
             signal   = squeeze(HighFreqSignal(1,:,Epochs(epoch)));
@@ -54,8 +57,17 @@ function [] = run_event_related_eMI(EEG,Epochs,HighFreqSignal,Maxes,LowFreq,fP_b
             [meanAmp,meanAmpSurr] = assignPhaseBins(Map,MessMap,MeanLowFreq,nbBins,PhaseBins,Nboot,plotWithMask);
             MeanAmp = MeanAmp + meanAmp;
             MeanAmpSurr = MeanAmpSurr + meanAmpSurr;
+            MeanSignal = MeanSignal + meanSignal;
+            MeanLowFreq = MeanLowFreq + meanLowFreq;
+            Map = Map + map;
             progressbar(((i-1)*length(Epochs)+epoch)/(size(fP_bins,2)*length(Epochs))*100)
         end 
+        
+        MeanAmp = MeanAmp/length(Epochs);
+        MeanAmpSurr = MeanAmpSurr/length(Epochs);
+        MeanSignal = MeanSignal/length(Epochs);
+        MeanLowFreq = MeanLowFreq/length(Epochs);
+        Map = Map/length(Epochs);
         
         clear MessMap
         [MI,MXS,PC] = calc_ModulationIndex_ER(MeanAmp,MeanAmpSurr,nbBins,Nboot,pPhaseCom,plotWithMask);
